@@ -1,45 +1,57 @@
 package endpoints;
 
-import java.io.ByteArrayInputStream;
-
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import com.itextpdf.io.source.ByteArrayOutputStream;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Paragraph;
-
-import services.HelloWorldService;
+import models.Invoice;
+import services.MockInvoiceService;
+import services.PdfService;
 
 @Path("/pdf")
+@Produces("application/pdf")
 public class PdfEndpoint {
 
     @Inject
-    HelloWorldService helloService;
+    PdfService pdfService;
+
+    @Inject 
+    MockInvoiceService mockInvoiceService;
 
     @GET
-    @Produces("application/pdf")
-    public Response getPdfFile() {
-        String invoiceName = "invoice";
+    public Response getInvoicePdfFile() {
+        ResponseBuilder response = Response.ok().entity(pdfService.GetInvoicePdf(mockInvoiceService.GenerateMockInvoice()));
+        response.header("Content-Disposition", "attachment; filename=invoice.pdf");
+        return response.build();
+    }
 
-        String text = "This is the text of my pdf";
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PdfDocument pdfDoc = new PdfDocument(new PdfWriter(baos));
+    @POST
+    @Consumes("application/json")
+    public Response getInvoicePdfFileFromInvoice(Invoice invoice){
+        ResponseBuilder response = Response.ok().entity(pdfService.GetInvoicePdf(invoice));
+        response.header("Content-Disposition", "attachment; filename=invoice.pdf");
+        return response.build();
+    }
 
-        Document doc = new Document(pdfDoc);
-        doc.add(new Paragraph(text));
-        doc.close();
+    @POST
+    @Path("/mirror")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Response getMirrorJson(Invoice invoice){
+        return Response.ok().entity(invoice).build();
+    }
 
-        ByteArrayInputStream pdfStream = new ByteArrayInputStream(baos.toByteArray());
-
-        ResponseBuilder response = Response.ok().entity(pdfStream);
-        response.header("Content-Disposition", "attachment; filename=" + invoiceName + ".pdf");
+    @GET
+    @Path("/sample")
+    public Response getSamplePdfFile() {
+        ResponseBuilder response = Response.ok().entity(pdfService.GetSamplePdf());
+        response.header("Content-Disposition", "attachment; filename=invoice.pdf");
         return response.build();
     }
 
