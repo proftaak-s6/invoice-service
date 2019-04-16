@@ -25,4 +25,36 @@ public class RegionalInvoice {
         return total;
     }
 
+    public RegionalInvoice(BigDecimal TotalPriceBeforeTaxes, List<RegionalInvoiceLine> RegionalInvoiceLines) {
+        this.TotalPriceBeforeTaxes = TotalPriceBeforeTaxes;
+        this.RegionalInvoiceLines = RegionalInvoiceLines;
+    }
+
+    public BigDecimal getTotalPriceBeforeTaxes() {
+        return this.TotalPriceBeforeTaxes;
+    }
+
+    public void setTotalPriceBeforeTaxes(BigDecimal TotalPriceBeforeTaxes) {
+        this.TotalPriceBeforeTaxes = TotalPriceBeforeTaxes;
+    }
+
+    // Getters and setters
+    public List<RegionalInvoiceLine> getRegionalInvoiceLines() {
+        return this.RegionalInvoiceLines;
+    }
+
+    public void setRegionalInvoiceLines(List<RegionalInvoiceLine> RegionalInvoiceLines) {
+        this.RegionalInvoiceLines = RegionalInvoiceLines;
+    }
+
+    public RegionalInvoice TotalPriceBeforeTaxes(BigDecimal TotalPriceBeforeTaxes) {
+        this.TotalPriceBeforeTaxes = TotalPriceBeforeTaxes;
+        return this;
+    }
+
+    public RegionalInvoice RegionalInvoiceLines(List<RegionalInvoiceLine> RegionalInvoiceLines) {
+        this.RegionalInvoiceLines = RegionalInvoiceLines;
+        return this;
+    }
+
 }

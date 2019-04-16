@@ -41,7 +41,7 @@ public class Invoice {
         return this.calculatePriceBeforeTaxes().multiply(new BigDecimal(1.21));
     }
 
-
+    // Getters and setters
     public String getInvoiceNumberString() {
         return this.invoiceNumberString;
     }

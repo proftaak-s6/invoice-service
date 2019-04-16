@@ -25,4 +25,45 @@ public class Address {
         this.Country + " \n";
     }
 
+    // Getters and setters
+    public String getStreetname() {
+        return this.Streetname;
+    }
+
+    public void setStreetname(String Streetname) {
+        this.Streetname = Streetname;
+    }
+
+    public String getHousenumber() {
+        return this.Housenumber;
+    }
+
+    public void setHousenumber(String Housenumber) {
+        this.Housenumber = Housenumber;
+    }
+
+    public String getZipcode() {
+        return this.Zipcode;
+    }
+
+    public void setZipcode(String Zipcode) {
+        this.Zipcode = Zipcode;
+    }
+
+    public String getCity() {
+        return this.City;
+    }
+
+    public void setCity(String City) {
+        this.City = City;
+    }
+
+    public String getCountry() {
+        return this.Country;
+    }
+
+    public void setCountry(String Country) {
+        this.Country = Country;
+    }
+
 }

@@ -29,7 +29,7 @@ public class SupplierInformation {
                 "IBAN: " + this.IBANString;
     }
 
-
+    // Getters and setters
     public String getCompanyName() {
         return this.companyName;
     }
