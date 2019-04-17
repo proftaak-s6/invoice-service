@@ -1,7 +1,6 @@
 package services;
 
 import java.io.ByteArrayInputStream;
-import java.net.MalformedURLException;
 
 import javax.enterprise.context.ApplicationScoped;
 
