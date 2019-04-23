@@ -116,16 +116,16 @@ public class iTextPdfBuilder {
     }
 
     private void AddVehicleTable(VehicleInvoice vehicleInvoice) {
-        String vehicleInfo = vehicleInvoice.DisplayName + ", Kentekenplaat: " + vehicleInvoice.LicensePlate;
+        String vehicleInfo = vehicleInvoice.getDisplayName() + ", Kentekenplaat: " + vehicleInvoice.getLicensePlate();
         this.AddStyledParagraph(vehicleInfo, ITextStyle.H1);
 
         this.AddStyledParagraph("Regio's", ITextStyle.H2);
-        this.AddVehicleRegionalInvoiceTable(vehicleInvoice.RegionalInvoice);
+        this.AddVehicleRegionalInvoiceTable(vehicleInvoice.getRegionalInvoice());
 
         this.AddWhiteline();
 
         this.AddStyledParagraph("Kilometers", ITextStyle.H2);
-        this.AddVehicleKilometerInvoiceTable(vehicleInvoice.KilometerInvoice);
+        this.AddVehicleKilometerInvoiceTable(vehicleInvoice.getKilometerInvoice());
     }
 
     private void AddVehicleRegionalInvoiceTable(RegionalInvoice regionalInvoice) {
@@ -139,18 +139,18 @@ public class iTextPdfBuilder {
         table.addCell(new Cell().add("Prijs ex. btw").setBold());
 
         // Content
-        for (RegionalInvoiceLine ril : regionalInvoice.RegionalInvoiceLines) {
-            table.addCell(ril.Region);
-            table.addCell(this.formatAsSimpleDate(ril.RegistrationMoment));
-            table.addCell(this.createCurrencyCell(ril.RegionalPriceBeforeTaxes));
-            table.addCell(this.createCurrencyCell(ril.AccountedPriceBeforeTaxes));
+        for (RegionalInvoiceLine ril : regionalInvoice.getRegionalInvoiceLines()) {
+            table.addCell(ril.getRegion());
+            table.addCell(this.formatAsSimpleDate(ril.getRegistrationMoment()));
+            table.addCell(this.createCurrencyCell(ril.getRegionalPriceBeforeTaxes()));
+            table.addCell(this.createCurrencyCell(ril.getAccountedPriceBeforeTaxes()));
         }
 
         // Totals
         table.addCell(new Cell().add("Totaal").setBold());
         table.addCell("");
         table.addCell("");
-        table.addCell(new Cell().add(this.createCurrencyCell(regionalInvoice.TotalPriceBeforeTaxes)).setBold());
+        table.addCell(new Cell().add(this.createCurrencyCell(regionalInvoice.getTotalPriceBeforeTaxes())).setBold());
 
         this.document.add(table);
     }
@@ -166,18 +166,18 @@ public class iTextPdfBuilder {
         table.addCell(new Cell().add("Prijs ex. btw").setBold());
 
         // Content
-        for (KilometerInvoiceLine kilometerInvoiceLine : kilometerInvoice.KilometerInvoiceLines) {
-            table.addCell(kilometerInvoiceLine.RoadType.toString());
+        for (KilometerInvoiceLine kilometerInvoiceLine : kilometerInvoice.getKilometerInvoiceLines()) {
+            table.addCell(kilometerInvoiceLine.getRoadType().toString());
             table.addCell(kilometerInvoiceLine.getDrivenDistanceInKilometers().toString());
-            table.addCell(this.createCurrencyCell(kilometerInvoiceLine.PricePerKilometerBeforeTaxes, 8));
-            table.addCell(this.createCurrencyCell(kilometerInvoiceLine.AccountedPriceBeforeTaxes));
+            table.addCell(this.createCurrencyCell(kilometerInvoiceLine.getPricePerKilometerBeforeTaxes(), 8));
+            table.addCell(this.createCurrencyCell(kilometerInvoiceLine.getAccountedPriceBeforeTaxes()));
         }
 
         // Totals
         table.addCell(new Cell().add("Totaal").setBold());
         table.addCell("");
         table.addCell("");
-        table.addCell(new Cell().add(this.createCurrencyCell(kilometerInvoice.TotalPriceBeforeTaxes).setBold()));
+        table.addCell(new Cell().add(this.createCurrencyCell(kilometerInvoice.getTotalPriceBeforeTaxes()).setBold()));
 
         this.document.add(table);
     }
@@ -196,9 +196,9 @@ public class iTextPdfBuilder {
         table.setStrokeColor(Color.WHITE);
 
         table.addCell("Factuurnummer: ");
-        table.addCell(invoice.invoiceNumberString);
+        table.addCell(invoice.getInvoiceNumberString());
         table.addCell("Factuurdatum: ");
-        table.addCell(this.formatAsSimpleDate(invoice.invoiceDate));
+        table.addCell(this.formatAsSimpleDate(invoice.getInvoiceDate()));
 
         this.document.add(table);
         return this;
@@ -214,9 +214,9 @@ public class iTextPdfBuilder {
         table.addCell(new Cell().add("Totaal").setBold());
 
         // Car line
-        for (VehicleInvoice vehicleInvoice : invoice.vehicleInvoices) {
-            table.addCell(vehicleInvoice.DisplayName);
-            table.addCell(vehicleInvoice.LicensePlate);
+        for (VehicleInvoice vehicleInvoice : invoice.getVehicleInvoices()) {
+            table.addCell(vehicleInvoice.getDisplayName());
+            table.addCell(vehicleInvoice.getLicensePlate());
             table.addCell(new Cell().add(this.createCurrencyCell(vehicleInvoice.calculatePriceBeforeTaxes())));
         }
 

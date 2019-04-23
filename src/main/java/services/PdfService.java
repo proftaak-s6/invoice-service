@@ -39,14 +39,14 @@ public class PdfService {
 
     public ByteArrayInputStream GetInvoicePdf(Invoice invoice) {
         ByteArrayOutputStream  baos = new iTextPdfBuilder()
-            .AddTextboxParagraph(invoice.supplierInformation.toString(), 350, 610, 200)
+            .AddTextboxParagraph(invoice.getSupplierInformation().toString(), 350, 610, 200)
             .AddTitleImage()
                 .AddWhitelines(6)
-            .AddParagraph(invoice.personalInformation.toString())
+            .AddParagraph(invoice.getPersonalInformation().toString())
                 .AddWhitelines(2)
             .AddChapterTitle("Factuur")
             .AddInvoiceInformation(invoice).AddWhiteline()
-            .AddVehiclesTables(invoice.vehicleInvoices)
+            .AddVehiclesTables(invoice.getVehicleInvoices())
             .AddChapterTitle("Totaal").AddTotalsTable(invoice)
                 .AddWhiteline()
             .AddDisclaimer(invoice.calculatePriceAfterTaxes())
