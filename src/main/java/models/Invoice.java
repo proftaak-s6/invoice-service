@@ -5,11 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 public class Invoice {
-    public String invoiceNumberString;
-    public Date invoiceDate;
-    public PersonalInformation personalInformation;
-    public SupplierInformation supplierInformation;
-    public List<VehicleInvoice> vehicleInvoices;
+    private String invoiceNumberString;
+    private Date invoiceDate;
+    private PersonalInformation personalInformation;
+    private SupplierInformation supplierInformation;
+    private List<VehicleInvoice> vehicleInvoices;
 
     public Invoice() {
     }

@@ -1,11 +1,11 @@
 package models;
 
 public class SupplierInformation {
-    String companyName;
-    Address address = new Address();
-    String BTWNumberString;
-    String KVKNumberString;
-    String IBANString;
+    private String companyName;
+    private Address address = new Address();
+    private String BTWNumberString;
+    private String KVKNumberString;
+    private String IBANString;
 
     public SupplierInformation() {
     }
@@ -21,12 +21,8 @@ public class SupplierInformation {
 
     @Override
     public String toString() {
-        return this.companyName + " \n" + 
-                this.address + " \n" + 
-                "\n " + 
-                "BTW nr.: " + this.BTWNumberString + " \n" + 
-                "KvK nr.: " + this.KVKNumberString + " \n" + 
-                "IBAN: " + this.IBANString;
+        return this.companyName + " \n" + this.address + " \n" + "\n " + "BTW nr.: " + this.BTWNumberString + " \n"
+                + "KvK nr.: " + this.KVKNumberString + " \n" + "IBAN: " + this.IBANString;
     }
 
     // Getters and setters

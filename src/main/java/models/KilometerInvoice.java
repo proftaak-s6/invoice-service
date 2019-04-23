@@ -5,21 +5,21 @@ import java.util.List;
 
 public class KilometerInvoice {
 
-    public List<KilometerInvoiceLine> KilometerInvoiceLines;
-    public BigDecimal TotalPriceBeforeTaxes;
+    private List<KilometerInvoiceLine> kilometerInvoiceLines;
+    private BigDecimal totalPriceBeforeTaxes;
 
     public KilometerInvoice() {
     }
 
     public KilometerInvoice(List<KilometerInvoiceLine> KilometerInvoiceLines) {
-        this.KilometerInvoiceLines = KilometerInvoiceLines;
-        this.TotalPriceBeforeTaxes = this.calculatePriceBeforeTaxes();
+        this.kilometerInvoiceLines = KilometerInvoiceLines;
+        this.totalPriceBeforeTaxes = this.calculatePriceBeforeTaxes();
     }
 
     public BigDecimal calculatePriceBeforeTaxes() {
         BigDecimal total = new BigDecimal(0);
 
-        for (KilometerInvoiceLine kil : this.KilometerInvoiceLines) {
+        for (KilometerInvoiceLine kil : this.kilometerInvoiceLines) {
             total = total.add(kil.calculatePriceBeforeTaxes());
         }
 
@@ -28,34 +28,34 @@ public class KilometerInvoice {
 
 
     public KilometerInvoice(List<KilometerInvoiceLine> KilometerInvoiceLines, BigDecimal TotalPriceBeforeTaxes) {
-        this.KilometerInvoiceLines = KilometerInvoiceLines;
-        this.TotalPriceBeforeTaxes = TotalPriceBeforeTaxes;
+        this.kilometerInvoiceLines = KilometerInvoiceLines;
+        this.totalPriceBeforeTaxes = TotalPriceBeforeTaxes;
     }
 
     // Getters and setters
     public List<KilometerInvoiceLine> getKilometerInvoiceLines() {
-        return this.KilometerInvoiceLines;
+        return this.kilometerInvoiceLines;
     }
 
     public void setKilometerInvoiceLines(List<KilometerInvoiceLine> KilometerInvoiceLines) {
-        this.KilometerInvoiceLines = KilometerInvoiceLines;
+        this.kilometerInvoiceLines = KilometerInvoiceLines;
     }
 
     public BigDecimal getTotalPriceBeforeTaxes() {
-        return this.TotalPriceBeforeTaxes;
+        return this.totalPriceBeforeTaxes;
     }
 
     public void setTotalPriceBeforeTaxes(BigDecimal TotalPriceBeforeTaxes) {
-        this.TotalPriceBeforeTaxes = TotalPriceBeforeTaxes;
+        this.totalPriceBeforeTaxes = TotalPriceBeforeTaxes;
     }
 
     public KilometerInvoice KilometerInvoiceLines(List<KilometerInvoiceLine> KilometerInvoiceLines) {
-        this.KilometerInvoiceLines = KilometerInvoiceLines;
+        this.kilometerInvoiceLines = KilometerInvoiceLines;
         return this;
     }
 
     public KilometerInvoice TotalPriceBeforeTaxes(BigDecimal TotalPriceBeforeTaxes) {
-        this.TotalPriceBeforeTaxes = TotalPriceBeforeTaxes;
+        this.totalPriceBeforeTaxes = TotalPriceBeforeTaxes;
         return this;
     }
 

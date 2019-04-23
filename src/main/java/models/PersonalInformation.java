@@ -1,8 +1,8 @@
 package models;
 
 public class PersonalInformation {
-    public String fullname;
-    public Address address;
+    private String fullname;
+    private Address address;
 
     public PersonalInformation() {
     }
@@ -14,8 +14,8 @@ public class PersonalInformation {
 
     @Override
     public String toString() {
-        return this.fullname + " \n" + this.address.Streetname + " " + this.address.Housenumber + " \n"
-                + this.address.Zipcode + " " + this.address.City + " \n" + this.address.Country;
+        return this.fullname + " \n" + this.address.getStreetname() + " " + this.address.getHousenumber() + " \n"
+                + this.address.getZipcode() + " " + this.address.getCity() + " \n" + this.address.getCountry();
     }
     
     // Getters and setters
