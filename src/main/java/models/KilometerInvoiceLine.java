@@ -1,5 +1,6 @@
 package models;
 
+import java.beans.Transient;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
@@ -25,6 +26,7 @@ public class KilometerInvoiceLine {
                 .divide(new BigDecimal(1000)).round(new MathContext(2));
     }
 
+    @Transient
     public BigDecimal getDrivenDistanceInKilometers() {
         return new BigDecimal(this.drivenDistanceInMeters).divide(new BigDecimal(1000));
     }
