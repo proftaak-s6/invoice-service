@@ -5,18 +5,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import models.Address;
 import models.Invoice;
-import models.KilometerInvoice;
 import models.KilometerInvoiceLine;
+import models.PersonalInformation;
 import models.RegionalInvoiceLine;
 import models.RoadType;
-import models.PersonalInformation;
-import models.RegionalInvoice;
 import models.SupplierInformation;
 import models.VehicleInvoice;
-
-import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class MockInvoiceService {
@@ -42,7 +40,7 @@ public class MockInvoiceService {
                                 "NL123456789B01", "123456789", "NL21ABNA0123456789");
         }
 
-        private static RegionalInvoice GenerateRegionalInvoiceOpelCorsa() {
+        private static List<RegionalInvoiceLine> GenerateRegionalInvoiceOpelCorsa() {
                 List<RegionalInvoiceLine> regionalInvoiceLines = new ArrayList<RegionalInvoiceLine>();
 
                 regionalInvoiceLines.add(new RegionalInvoiceLine("Tilburg", new Date(119, 03, 01, 8, 42),
@@ -58,11 +56,10 @@ public class MockInvoiceService {
                 regionalInvoiceLines.add(new RegionalInvoiceLine("Den Bosch", new Date(119, 03, 02, 19, 26),
                                 new BigDecimal(2.95), new BigDecimal(0)));
 
-                RegionalInvoice RegionalInvoice = new RegionalInvoice(regionalInvoiceLines);
-                return RegionalInvoice;
+                return regionalInvoiceLines;
         }
 
-        private static KilometerInvoice GenerateKilometerInvoiceOpelCorsa() {
+        private static List<KilometerInvoiceLine> GenerateKilometerInvoiceOpelCorsa() {
                 List<KilometerInvoiceLine> kilometerInvoiceLines = new ArrayList<KilometerInvoiceLine>();
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.A, 830000, new BigDecimal(0.005)));
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.B, 34000, new BigDecimal(0.003)));
@@ -70,10 +67,10 @@ public class MockInvoiceService {
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.D, 8000, new BigDecimal(0.001)));
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.E, 4000, new BigDecimal(0.000)));
 
-                return new KilometerInvoice(kilometerInvoiceLines);
+                return kilometerInvoiceLines;
         }
 
-        private static RegionalInvoice GenerateRegionalInvoicesVolkswagenPolo() {
+        private static List<RegionalInvoiceLine> GenerateRegionalInvoicesVolkswagenPolo() {
                 List<RegionalInvoiceLine> regionalInvoiceLines = new ArrayList<RegionalInvoiceLine>();
 
                 regionalInvoiceLines.add(new RegionalInvoiceLine("Tilburg", new Date(119, 03, 01, 8, 42),
@@ -89,11 +86,10 @@ public class MockInvoiceService {
                 regionalInvoiceLines.add(new RegionalInvoiceLine("Den Bosch", new Date(119, 03, 02, 19, 26),
                                 new BigDecimal(2.95), new BigDecimal(0)));
 
-                RegionalInvoice RegionalInvoice = new RegionalInvoice(regionalInvoiceLines);
-                return RegionalInvoice;
+                return regionalInvoiceLines;
         }
 
-        private static KilometerInvoice GenerateKilometerInvoiceVolkswagenPolo() {
+        private static List<KilometerInvoiceLine> GenerateKilometerInvoiceVolkswagenPolo() {
                 List<KilometerInvoiceLine> kilometerInvoiceLines = new ArrayList<KilometerInvoiceLine>();
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.A, 1030000, new BigDecimal(0.005)));
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.B, 664000, new BigDecimal(0.003)));
@@ -101,7 +97,7 @@ public class MockInvoiceService {
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.D, 8500, new BigDecimal(0.001)));
                 kilometerInvoiceLines.add(new KilometerInvoiceLine(RoadType.E, 4200, new BigDecimal(0.000)));
 
-                return new KilometerInvoice(kilometerInvoiceLines);
+                return kilometerInvoiceLines;
         }
 
         private static List<VehicleInvoice> GenerateVehicleInvoices() {

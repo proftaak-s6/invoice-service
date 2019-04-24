@@ -1,7 +1,6 @@
 package models;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.Date;
 
 public class RegionalInvoiceLine {
@@ -19,10 +18,6 @@ public class RegionalInvoiceLine {
         this.registrationMoment = RegistrationMoment;
         this.regionalPriceBeforeTaxes = RegionalPriceBeforeTaxes;
         this.accountedPriceBeforeTaxes = AccountedPriceBeforeTaxes;
-    }
-
-    public BigDecimal calculatePriceBeforeTaxes() {
-        return accountedPriceBeforeTaxes.round(new MathContext(2));
     }
 
     // Getters and setters

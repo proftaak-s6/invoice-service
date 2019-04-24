@@ -1,6 +1,5 @@
 package models;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,24 +20,6 @@ public class Invoice {
         this.personalInformation = personalInformation;
         this.supplierInformation = supplierInformation;
         this.vehicleInvoices = vehicleInvoices;
-    }
-
-    public BigDecimal calculatePriceBeforeTaxes() {
-        BigDecimal total = new BigDecimal(0);
-
-        for (VehicleInvoice vi : vehicleInvoices) {
-            total = total.add(vi.calculatePriceBeforeTaxes());
-        }
-
-        return total;
-    }
-
-    public BigDecimal calculateTaxes() {
-        return this.calculatePriceAfterTaxes().subtract(this.calculatePriceBeforeTaxes());
-    }
-
-    public BigDecimal calculatePriceAfterTaxes() {
-        return this.calculatePriceBeforeTaxes().multiply(new BigDecimal(1.21));
     }
 
     // Getters and setters
@@ -81,6 +62,5 @@ public class Invoice {
     public void setVehicleInvoices(List<VehicleInvoice> vehicleInvoices) {
         this.vehicleInvoices = vehicleInvoices;
     }
-    
 
 }

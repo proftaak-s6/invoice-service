@@ -1,27 +1,23 @@
 package models;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 public class VehicleInvoice {
     private String displayName;
     private String licensePlate;
 
-    private RegionalInvoice regionalInvoice;
-    private KilometerInvoice kilometerInvoice;
+    private List<RegionalInvoiceLine> regionalInvoiceLines;
+    private List<KilometerInvoiceLine> kilometerInvoiceLines;
 
     public VehicleInvoice() {
     }
 
-    public VehicleInvoice(String DisplayName, String LicensePlate, RegionalInvoice RegionalInvoice,
-            KilometerInvoice KilometerInvoice) {
-        this.displayName = DisplayName;
-        this.licensePlate = LicensePlate;
-        this.regionalInvoice = RegionalInvoice;
-        this.kilometerInvoice = KilometerInvoice;
-    }
-
-    public BigDecimal calculatePriceBeforeTaxes() {
-        return this.regionalInvoice.calculatePriceBeforeTaxes().add(this.kilometerInvoice.calculatePriceBeforeTaxes());
+    public VehicleInvoice(String displayName, String licensePlate, List<RegionalInvoiceLine> regionalInvoice,
+            List<KilometerInvoiceLine> kilometerInvoice) {
+        this.displayName = displayName;
+        this.licensePlate = licensePlate;
+        this.regionalInvoiceLines = regionalInvoice;
+        this.kilometerInvoiceLines = kilometerInvoice;
     }
 
     // Getters and setters
@@ -29,51 +25,32 @@ public class VehicleInvoice {
         return this.displayName;
     }
 
-    public void setDisplayName(String DisplayName) {
-        this.displayName = DisplayName;
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public String getLicensePlate() {
         return this.licensePlate;
     }
 
-    public void setLicensePlate(String LicensePlate) {
-        this.licensePlate = LicensePlate;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
-    public RegionalInvoice getRegionalInvoice() {
-        return this.regionalInvoice;
+    public List<RegionalInvoiceLine> getRegionalInvoiceLines() {
+        return this.regionalInvoiceLines;
     }
 
-    public void setRegionalInvoice(RegionalInvoice RegionalInvoice) {
-        this.regionalInvoice = RegionalInvoice;
+    public void setRegionalInvoiceLines(List<RegionalInvoiceLine> regionalInvoiceLines) {
+        this.regionalInvoiceLines = regionalInvoiceLines;
     }
 
-    public KilometerInvoice getKilometerInvoice() {
-        return this.kilometerInvoice;
+    public List<KilometerInvoiceLine> getKilometerInvoiceLines() {
+        return this.kilometerInvoiceLines;
     }
 
-    public void setKilometerInvoice(KilometerInvoice KilometerInvoice) {
-        this.kilometerInvoice = KilometerInvoice;
+    public void setKilometerInvoiceLines(List<KilometerInvoiceLine> kilometerInvoiceLines) {
+        this.kilometerInvoiceLines = kilometerInvoiceLines;
     }
 
-    public VehicleInvoice DisplayName(String DisplayName) {
-        this.displayName = DisplayName;
-        return this;
-    }
-
-    public VehicleInvoice LicensePlate(String LicensePlate) {
-        this.licensePlate = LicensePlate;
-        return this;
-    }
-
-    public VehicleInvoice RegionalInvoice(RegionalInvoice RegionalInvoice) {
-        this.regionalInvoice = RegionalInvoice;
-        return this;
-    }
-
-    public VehicleInvoice KilometerInvoice(KilometerInvoice KilometerInvoice) {
-        this.kilometerInvoice = KilometerInvoice;
-        return this;
-    }
 }

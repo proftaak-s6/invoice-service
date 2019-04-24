@@ -1,5 +1,7 @@
 package endpoints;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -20,21 +22,22 @@ public class PdfEndpoint {
     @Inject
     PdfService pdfService;
 
-    @Inject 
+    @Inject
     MockInvoiceService mockInvoiceService;
 
     @GET
     public Response getInvoicePdfFile() {
-        ResponseBuilder response = Response.ok().entity(pdfService.GetInvoicePdf(mockInvoiceService.GenerateMockInvoice()));
-        response.header("Content-Disposition", "attachment; filename=invoice.pdf");
+        ResponseBuilder response = Response.ok()
+                .entity(pdfService.GetInvoicePdf(mockInvoiceService.GenerateMockInvoice()));
+        response.header("Content-Disposition", "attachment; filename=" + this.getFileName() + ".pdf");
         return response.build();
     }
 
     @POST
     @Consumes("application/json")
-    public Response getInvoicePdfFileFromInvoice(Invoice invoice){
+    public Response getInvoicePdfFileFromInvoice(Invoice invoice) {
         ResponseBuilder response = Response.ok().entity(pdfService.GetInvoicePdf(invoice));
-        response.header("Content-Disposition", "attachment; filename=invoice.pdf");
+        response.header("Content-Disposition", "attachment; filename=" + this.getFileName() + ".pdf");
         return response.build();
     }
 
@@ -42,7 +45,7 @@ public class PdfEndpoint {
     @Path("/mirror")
     @Consumes("application/json")
     @Produces("application/json")
-    public Response getMirrorJson(Invoice invoice){
+    public Response getMirrorJson(Invoice invoice) {
         return Response.ok().entity(invoice).build();
     }
 
@@ -50,8 +53,12 @@ public class PdfEndpoint {
     @Path("/sample")
     public Response getSamplePdfFile() {
         ResponseBuilder response = Response.ok().entity(pdfService.GetSamplePdf());
-        response.header("Content-Disposition", "attachment; filename=invoice.pdf");
+        response.header("Content-Disposition", "attachment; filename=sample.pdf");
         return response.build();
     }
 
+    private String getFileName() {
+        long time = new Date().getTime();
+        return "invoice_" + time;
+    }
 }
