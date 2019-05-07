@@ -3,38 +3,27 @@ package models;
 import java.util.List;
 
 public class VehicleInvoice {
-    private String displayName;
-    private String licensePlate;
+    private Vehicle vehicle;
 
     private List<RegionalInvoiceLine> regionalInvoiceLines;
     private List<KilometerInvoiceLine> kilometerInvoiceLines;
 
+
     public VehicleInvoice() {
     }
 
-    public VehicleInvoice(String displayName, String licensePlate, List<RegionalInvoiceLine> regionalInvoice,
-            List<KilometerInvoiceLine> kilometerInvoice) {
-        this.displayName = displayName;
-        this.licensePlate = licensePlate;
-        this.regionalInvoiceLines = regionalInvoice;
-        this.kilometerInvoiceLines = kilometerInvoice;
+    public VehicleInvoice(Vehicle vehicle, List<RegionalInvoiceLine> regionalInvoiceLines, List<KilometerInvoiceLine> kilometerInvoiceLines) {
+        this.vehicle = vehicle;
+        this.regionalInvoiceLines = regionalInvoiceLines;
+        this.kilometerInvoiceLines = kilometerInvoiceLines;
     }
 
-    // Getters and setters
-    public String getDisplayName() {
-        return this.displayName;
+    public Vehicle getVehicle() {
+        return this.vehicle;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getLicensePlate() {
-        return this.licensePlate;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public List<RegionalInvoiceLine> getRegionalInvoiceLines() {
@@ -52,5 +41,4 @@ public class VehicleInvoice {
     public void setKilometerInvoiceLines(List<KilometerInvoiceLine> kilometerInvoiceLines) {
         this.kilometerInvoiceLines = kilometerInvoiceLines;
     }
-
 }
