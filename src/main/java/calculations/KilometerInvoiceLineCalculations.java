@@ -6,7 +6,6 @@ import java.math.MathContext;
 import models.*;
 
 public class KilometerInvoiceLineCalculations {
-    // #region KilometerInvoiceLine
     public static BigDecimal getCostBeforeTaxes(KilometerInvoiceLine kilometerInvoiceLine) {
         return kilometerInvoiceLine.getPricePerKilometerBeforeTaxes()
                 .multiply(new BigDecimal(kilometerInvoiceLine.getDrivenDistanceInMeters())).divide(new BigDecimal(1000))
@@ -16,5 +15,4 @@ public class KilometerInvoiceLineCalculations {
     public static BigDecimal getDrivenDistanceInKilometers(KilometerInvoiceLine kilometerInvoiceLine) {
         return new BigDecimal(kilometerInvoiceLine.getDrivenDistanceInMeters()).divide(new BigDecimal(1000));
     }
-    // #endregion
 }

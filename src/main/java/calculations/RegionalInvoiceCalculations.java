@@ -6,7 +6,6 @@ import java.util.List;
 import models.*;
 
 public class RegionalInvoiceCalculations {
-    // #region VehicleInvoice
     public static BigDecimal getCostBeforeTaxes(List<RegionalInvoiceLine> RegionalInvoiceLines) {
         BigDecimal total = new BigDecimal(0);
 
@@ -26,5 +25,4 @@ public class RegionalInvoiceCalculations {
 
         return total;
     }
-    // #endregion
 }

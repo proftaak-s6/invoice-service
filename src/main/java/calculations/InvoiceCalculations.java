@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 import models.*;
 
 public class InvoiceCalculations {
-
-    // #region Invoice
     public static BigDecimal getCostBeforeTaxes(Invoice invoice) {
         BigDecimal total = new BigDecimal(0);
 
@@ -25,6 +23,5 @@ public class InvoiceCalculations {
     public static BigDecimal getCostIncludingTaxes(Invoice invoice) {
         return InvoiceCalculations.getCostBeforeTaxes(invoice).multiply(new BigDecimal(1.21));
     }
-    // #endregion Invoice
 }
 
