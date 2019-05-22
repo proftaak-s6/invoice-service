@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.input.Trip;
-
+import models.input.TripPoint;
 import models.RoadType;
 import models.VehicleInvoice;
 
@@ -32,13 +32,13 @@ public class PricingCalculations {
 
     // Properties for energy label
 
-    public static <Trip> BigDecimal getCostForTrip(Trip trip) {
+    public static BigDecimal getCostForTrip(Trip trip) {
         BigDecimal total = new BigDecimal("0");
 
         List<TripPoint> trippoints = trip.getTripPoints();
         for (TripPoint tp : trippoints) {
             BigDecimal rushourMultiplier = PricingCalculations.getCostMultiplierForRushHour(tp.getLocalTime());
-            BigDecimal enegylabelMultiplier = PricingCalculations.getCostMultiplierForEnergyLabel(trip.getVehicle());
+            BigDecimal enegylabelMultiplier = PricingCalculations.getCostMultiplierForEnergyLabel(/*trip.getVehicle()*/);
         }
 
         return null;

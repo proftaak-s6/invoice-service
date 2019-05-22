@@ -1,6 +1,7 @@
 package models;
 
 import java.util.List;
+import models.input.Vehicle;
 
 public class VehicleInvoice {
     private Vehicle vehicle;
@@ -10,6 +11,7 @@ public class VehicleInvoice {
 
 
     public VehicleInvoice() {
+        
     }
 
     public VehicleInvoice(Vehicle vehicle, List<RegionalInvoiceLine> regionalInvoiceLines, List<KilometerInvoiceLine> kilometerInvoiceLines) {

@@ -101,13 +101,13 @@ public class MockInvoiceService {
         }
 
         private static List<VehicleInvoice> GenerateVehicleInvoices() {
-                VehicleInvoice opelCorsa = new VehicleInvoice("Opel Corsa", "32-LP-VV",
-                                GenerateRegionalInvoiceOpelCorsa(), GenerateKilometerInvoiceOpelCorsa());
-                VehicleInvoice volkswagenGolf = new VehicleInvoice("Volkswagen Polo", "TD-NR-98",
-                                GenerateRegionalInvoicesVolkswagenPolo(), GenerateKilometerInvoiceVolkswagenPolo());
+                // VehicleInvoice opelCorsa = new VehicleInvoice("Opel Corsa", "32-LP-VV",
+                //                 GenerateRegionalInvoiceOpelCorsa(), GenerateKilometerInvoiceOpelCorsa());
+                // VehicleInvoice volkswagenGolf = new VehicleInvoice("Volkswagen Polo", "TD-NR-98",
+                //                 GenerateRegionalInvoicesVolkswagenPolo(), GenerateKilometerInvoiceVolkswagenPolo());
                 List<VehicleInvoice> vehicleInvoices = new ArrayList<VehicleInvoice>();
-                vehicleInvoices.add(opelCorsa);
-                vehicleInvoices.add(volkswagenGolf);
+                // vehicleInvoices.add(opelCorsa);
+                // vehicleInvoices.add(volkswagenGolf);
 
                 return vehicleInvoices;
         }

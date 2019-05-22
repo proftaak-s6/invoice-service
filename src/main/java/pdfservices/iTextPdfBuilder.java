@@ -127,7 +127,7 @@ public class iTextPdfBuilder {
     }
 
     private void AddVehicleTable(VehicleInvoice vehicleInvoice) {
-        String vehicleInfo = vehicleInvoice.getDisplayName() + ", Kentekenplaat: " + vehicleInvoice.getLicensePlate();
+        String vehicleInfo = vehicleInvoice.getVehicle().getDisplayName() + ", Kentekenplaat: " + vehicleInvoice.getVehicle().getLicensePlate();
         this.AddStyledParagraph(vehicleInfo, ITextStyle.H1);
 
         this.AddStyledParagraph("Regio's", ITextStyle.H2);
@@ -231,8 +231,8 @@ public class iTextPdfBuilder {
 
         // Car line
         for (VehicleInvoice vi : invoice.getVehicleInvoices()) {
-            table.addCell(vi.getDisplayName());
-            table.addCell(vi.getLicensePlate());
+            table.addCell(vi.getVehicle().getDisplayName());
+            table.addCell(vi.getVehicle().getLicensePlate());
             table.addCell(new Cell().add(this.createCurrencyCell(VehicleInvoiceCalculations.getCostBeforeTaxes(vi))));
         }
 

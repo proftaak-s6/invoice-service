@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  invoice:
+    build: .
+    image: yoksar/invoice-service
+    environment: 
+      DB_URL: jdbc:mysql://192.168.178.24:9040/default
+      DB_USER: mysql
+      DB_PASS: mysql
+    ports:
+      - 9000:8080
