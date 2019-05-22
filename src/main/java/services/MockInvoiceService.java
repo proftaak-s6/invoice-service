@@ -15,6 +15,7 @@ import models.RegionalInvoiceLine;
 import models.RoadType;
 import models.SupplierInformation;
 import models.VehicleInvoice;
+import models.input.Vehicle;
 
 @ApplicationScoped
 public class MockInvoiceService {
@@ -101,13 +102,13 @@ public class MockInvoiceService {
         }
 
         private static List<VehicleInvoice> GenerateVehicleInvoices() {
-                // VehicleInvoice opelCorsa = new VehicleInvoice("Opel Corsa", "32-LP-VV",
-                //                 GenerateRegionalInvoiceOpelCorsa(), GenerateKilometerInvoiceOpelCorsa());
-                // VehicleInvoice volkswagenGolf = new VehicleInvoice("Volkswagen Polo", "TD-NR-98",
-                //                 GenerateRegionalInvoicesVolkswagenPolo(), GenerateKilometerInvoiceVolkswagenPolo());
+                Vehicle opelCorsa = new Vehicle("Opel Corsa", "32-LP-VV");
+                Vehicle volkswagenGolf = new Vehicle("Volkswagen Polo", "TD-NR-98");
                 List<VehicleInvoice> vehicleInvoices = new ArrayList<VehicleInvoice>();
-                // vehicleInvoices.add(opelCorsa);
-                // vehicleInvoices.add(volkswagenGolf);
+                vehicleInvoices.add(new VehicleInvoice(opelCorsa, GenerateRegionalInvoiceOpelCorsa(),
+                                GenerateKilometerInvoiceVolkswagenPolo()));
+                vehicleInvoices.add(new VehicleInvoice(volkswagenGolf, GenerateRegionalInvoicesVolkswagenPolo(),
+                                GenerateKilometerInvoiceVolkswagenPolo()));
 
                 return vehicleInvoices;
         }

@@ -8,7 +8,7 @@ public class Vehicle {
     }
 
 
-    public Vehicle(String displayName, String licensePlate, int massWeight) {
+    public Vehicle(String displayName, String licensePlate) {
         this.displayName = displayName;
         this.licensePlate = licensePlate;
     }
