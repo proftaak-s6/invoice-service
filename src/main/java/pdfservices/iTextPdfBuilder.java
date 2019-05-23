@@ -60,7 +60,7 @@ public class iTextPdfBuilder {
 
     private iTextPdfBuilder AddTitleImage() {
         try {
-            String imagePath = "/media/resources/header-rijksoverheid.png";
+            String imagePath = "https://github.com/proftaak-s6/invoice-service/blob/master/resources/header-rijksoverheid.png?raw=true";
             ImageData data = ImageDataFactory.create(imagePath);
 
             Image image = new Image(data);
