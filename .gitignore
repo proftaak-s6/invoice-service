@@ -1,3 +1,5 @@
+.idea/
+volumes/db/data
 .settings/
 target/
 .vscode/
