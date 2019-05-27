@@ -73,7 +73,18 @@
       <groupId>com.kumuluz.ee</groupId>
       <artifactId>kumuluzee-jta-narayana</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.kumuluz.ee.cors</groupId>
+      <artifactId>kumuluzee-cors</artifactId>
+      <version>1.0.4</version>
+    </dependency>
 
+    <!-- Database -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.15</version>
+    </dependency>
 
     <!-- Start iTextPDF dependencies -->
     <dependency>

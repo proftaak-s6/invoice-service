@@ -45,7 +45,6 @@ public class PaymentEndpoint {
                 .build();
     }
     @PUT
-    @Path("")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(Payment paymentToUpdate) {
         Payment payment;
@@ -73,7 +72,6 @@ public class PaymentEndpoint {
     }
 
     @POST
-    @Path("")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(PaymentDto paymentDto, @Context UriInfo context) {
         Payment payment;

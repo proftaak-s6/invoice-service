@@ -3,20 +3,19 @@ package endpoints.dto;
 import models.Payment;
 
 import java.time.Month;
-import java.time.Year;
 
 public class PaymentDto {
     private String bsn;
     private Month month;
-    private Year year;
-    private boolean isPayed;
+    private int year;
+    private boolean isPaid;
 
     public Payment toModel(){
         Payment payment = new Payment();
         payment.setBsn(bsn);
         payment.setMonth(month);
         payment.setYear(year);
-        payment.setPayed(isPayed);
+        payment.setPaid(isPaid);
         return payment;
     }
 
@@ -36,19 +35,19 @@ public class PaymentDto {
         this.month = month;
     }
 
-    public Year getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(Year year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public boolean isPayed() {
-        return isPayed;
+    public boolean isPaid() {
+        return isPaid;
     }
 
-    public void setPayed(boolean payed) {
-        isPayed = payed;
+    public void setPaid(boolean paid) {
+        isPaid = paid;
     }
 }

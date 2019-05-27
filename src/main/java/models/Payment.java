@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.Month;
-import java.time.Year;
 
 @Entity
 public class Payment {
@@ -16,8 +15,8 @@ public class Payment {
 
     private String bsn;
     private Month month;
-    private Year year;
-    private boolean isPayed;
+    private int year;
+    private boolean isPaid;
 
     public Payment() {
 
@@ -41,20 +40,28 @@ public class Payment {
         this.month = month;
     }
 
-    public Year getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(Year year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public boolean isPayed() {
-        return isPayed;
+    public boolean isPaid() {
+        return isPaid;
     }
 
-    public void setPayed(boolean payed) {
-        isPayed = payed;
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     //endregion

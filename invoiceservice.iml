@@ -138,6 +138,11 @@
     <orderEntry type="library" name="Maven: javax.resource:javax.resource-api:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.jboss:jboss-transaction-spi:7.6.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.narayana.jta:narayana-jta:5.9.4.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.kumuluz.ee.cors:kumuluzee-cors:1.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.thetransactioncompany:cors-filter:2.5" level="project" />
+    <orderEntry type="library" name="Maven: com.thetransactioncompany:java-property-utils:1.9.1" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.15" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:kernel:7.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.13" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:io:7.0.2" level="project" />
