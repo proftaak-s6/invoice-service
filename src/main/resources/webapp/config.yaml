@@ -1,0 +1,11 @@
+  kumuluzee:
+    openapi:
+      ui:
+        enabled: true
+    datasources:
+      - jndi-name: jdbc/invoice
+        connection-url: '${DATABASE_URL}'
+        username: '${DATABASE_USER}'
+        password: '${DATABASE_PASS}'
+        pool:
+          max-size: 20
