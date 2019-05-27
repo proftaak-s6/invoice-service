@@ -5,8 +5,8 @@ services:
     build: .
     image: yoksar/invoice-service
     environment: 
-      DB_URL: jdbc:mysql://192.168.178.24:9040/projectdb
-      DB_USER: mysql
-      DB_PASS: mysql
+      DATABASE_URL: jdbc:mysql://192.168.178.24:9040/projectdb
+      DATABASE_USER: mysql
+      DATABASE_PASS: mysql
     ports:
       - 9000:8080
