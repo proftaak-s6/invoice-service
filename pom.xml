@@ -141,6 +141,15 @@
       <version>7.0.2</version>
     </dependency>
     <!-- End iTextPDF dependencies -->
+
+    <!--    Paypal    -->
+
+    <dependency>
+      <groupId>com.paypal.sdk</groupId>
+      <artifactId>rest-api-sdk</artifactId>
+      <version>LATEST</version>
+    </dependency>
+
   </dependencies>
 
 
