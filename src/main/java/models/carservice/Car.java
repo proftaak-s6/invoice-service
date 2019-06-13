@@ -1,5 +1,6 @@
 package models.carservice;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,16 @@ public class Car {
     private String energyLabel;
     private Tracker tracker;
     private List<Step> drivenSteps;
+
+    public BigDecimal getTotalCostOfDrivenSteps() {
+        BigDecimal total = new BigDecimal(0);
+
+        for (Step step : drivenSteps) {
+            total = total.add(BigDecimal.valueOf(step.getPriceToPay()));
+        }
+
+        return total;
+    }
 
     public Car() {
     }

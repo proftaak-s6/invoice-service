@@ -2,7 +2,7 @@ package endpoints;
 
 import endpoints.dto.PaymentDto;
 import models.Payment;
-import services.interfaces.PaymentService;
+import services.PaymentServiceImpl;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -19,56 +19,51 @@ import java.util.List;
 public class PaymentEndpoint {
 
     @Inject
-    PaymentService paymentService;
+    PaymentServiceImpl paymentService;
 
     @GET
-    public Response getAll(){
+    public Response getAll() {
         List<Payment> paymentList = paymentService.getAll();
-        if (paymentList.isEmpty()){
+        if (paymentList.isEmpty()) {
             return Response.status(Response.Status.NO_CONTENT.getStatusCode(), "No payments found").build();
         }
 
-        return Response.ok()
-                .entity(paymentList)
-                .build();
+        return Response.ok().entity(paymentList).build();
     }
 
     @GET
     @Path("/{id}")
     public Response getById(@PathParam("id") long id) {
         Payment payment = paymentService.getById(id);
-        if (payment == null){
+        if (payment == null) {
             return Response.status(Response.Status.NOT_FOUND.getStatusCode(), "No payment found").build();
         }
-        return Response.ok()
-                .entity(payment)
-                .build();
+        return Response.ok().entity(payment).build();
     }
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(Payment paymentToUpdate) {
         Payment payment;
 
-        try{
+        try {
             payment = paymentService.update(paymentToUpdate);
-        }catch (Exception e){
+        } catch (Exception e) {
             return Response.status(Response.Status.NOT_MODIFIED.getStatusCode(), e.toString()).build();
         }
-        return Response.ok()
-                .entity(payment)
-                .build();
+        return Response.ok().entity(payment).build();
     }
+
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") long id) {
-        try{
+        try {
             paymentService.delete(id);
-        }catch (Exception e) {
+        } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e.toString()).build();
         }
 
-        return Response.ok()
-                .build();
+        return Response.ok().build();
     }
 
     @POST
@@ -76,15 +71,13 @@ public class PaymentEndpoint {
     public Response create(PaymentDto paymentDto, @Context UriInfo context) {
         Payment payment;
 
-        try{
+        try {
             payment = paymentService.create(paymentDto.toModel());
-        }catch (Exception e){
+        } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e.toString()).build();
         }
 
-        URI location = context.getAbsolutePathBuilder()
-                .path(payment.getBsn())
-                .build();
+        URI location = context.getAbsolutePathBuilder().path(payment.getBsn()).build();
 
         return Response.status(Response.Status.CREATED.getStatusCode(), location.toString()).build();
     }

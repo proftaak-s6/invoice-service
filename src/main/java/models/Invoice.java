@@ -1,34 +1,35 @@
 package models;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import models.carservice.Car;
+
 public class Invoice {
-    private String invoiceNumberString;
     private Date invoiceDate;
     private PersonalInformation personalInformation;
-    private SupplierInformation supplierInformation;
-    private List<VehicleInvoice> vehicleInvoices;
+    private Payment payment;
+    private List<Car> cars;
+
+    public BigDecimal getTotalCostOfCars() {
+        BigDecimal total = new BigDecimal(0);
+
+        for (Car car : cars) {
+            total = total.add(car.getTotalCostOfDrivenSteps());
+        }
+
+        return total;
+    }
 
     public Invoice() {
     }
 
-    public Invoice(String invoiceNumberString, Date invoiceDate, PersonalInformation personalInformation,
-            SupplierInformation supplierInformation, List<VehicleInvoice> vehicleInvoices) {
-        this.invoiceNumberString = invoiceNumberString;
+    public Invoice(Date invoiceDate, PersonalInformation personalInformation, Payment payment, List<Car> cars) {
         this.invoiceDate = invoiceDate;
         this.personalInformation = personalInformation;
-        this.supplierInformation = supplierInformation;
-        this.vehicleInvoices = vehicleInvoices;
-    }
-
-    // Getters and setters
-    public String getInvoiceNumberString() {
-        return this.invoiceNumberString;
-    }
-
-    public void setInvoiceNumberString(String invoiceNumberString) {
-        this.invoiceNumberString = invoiceNumberString;
+        this.payment = payment;
+        this.cars = cars;
     }
 
     public Date getInvoiceDate() {
@@ -47,20 +48,26 @@ public class Invoice {
         this.personalInformation = personalInformation;
     }
 
-    public SupplierInformation getSupplierInformation() {
-        return this.supplierInformation;
+    public Payment getPayment() {
+        return this.payment;
     }
 
-    public void setSupplierInformation(SupplierInformation supplierInformation) {
-        this.supplierInformation = supplierInformation;
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
-    public List<VehicleInvoice> getVehicleInvoices() {
-        return this.vehicleInvoices;
+    public List<Car> getCars() {
+        return this.cars;
     }
 
-    public void setVehicleInvoices(List<VehicleInvoice> vehicleInvoices) {
-        this.vehicleInvoices = vehicleInvoices;
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " invoiceDate='" + getInvoiceDate() + "'" + ", personalInformation='" + getPersonalInformation()
+                + "'" + ", payment='" + getPayment() + "'" + ", cars='" + getCars() + "'" + "}";
     }
 
 }

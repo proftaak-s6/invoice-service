@@ -19,13 +19,26 @@ public class Payment {
     private boolean isPaid;
 
     public Payment() {
-
     }
 
-    //region getters and setters
+    public Payment(long id, String bsn, Month month, int year, boolean isPaid) {
+        this.id = id;
+        this.bsn = bsn;
+        this.month = month;
+        this.year = year;
+        this.isPaid = isPaid;
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getBsn() {
-        return bsn;
+        return this.bsn;
     }
 
     public void setBsn(String bsn) {
@@ -33,7 +46,7 @@ public class Payment {
     }
 
     public Month getMonth() {
-        return month;
+        return this.month;
     }
 
     public void setMonth(Month month) {
@@ -41,28 +54,29 @@ public class Payment {
     }
 
     public int getYear() {
-        return year;
+        return this.year;
     }
 
     public void setYear(int year) {
         this.year = year;
     }
 
-    public boolean isPaid() {
-        return isPaid;
+    public boolean isIsPaid() {
+        return this.isPaid;
     }
 
-    public void setPaid(boolean paid) {
-        isPaid = paid;
+    public boolean getIsPaid() {
+        return this.isPaid;
     }
 
-    public long getId() {
-        return id;
+    public void setIsPaid(boolean isPaid) {
+        this.isPaid = isPaid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "{" + " id='" + getId() + "'" + ", bsn='" + getBsn() + "'" + ", month='" + getMonth() + "'" + ", year='"
+                + getYear() + "'" + ", isPaid='" + isIsPaid() + "'" + "}";
     }
 
-    //endregion
 }

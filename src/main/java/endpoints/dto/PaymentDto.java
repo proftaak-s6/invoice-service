@@ -15,7 +15,7 @@ public class PaymentDto {
         payment.setBsn(bsn);
         payment.setMonth(month);
         payment.setYear(year);
-        payment.setPaid(isPaid);
+        payment.setIsPaid(isPaid);
         return payment;
     }
 

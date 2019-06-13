@@ -1,5 +1,6 @@
 package services;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,7 @@ import services.interfaces.TrackService;
 public class TrackServiceMock implements TrackService {
 
     @Override
-    public List<Step> getDriven(long trackerId, int year, int month) {
+    public List<Step> getDriven(long trackerId, int year, Month month) {
         List<Step> steps = new ArrayList<>();
 
         List<DatedLocation> locations = new ArrayList<>();
