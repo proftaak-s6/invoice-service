@@ -1,0 +1,74 @@
+[
+  {
+    "distance": 50,
+    "lication": {
+      "name": "Enschotsestraat",
+      "date": "2019-02-13T14:15:05",
+      "lat": 51.5642232,
+      "lng": 5.0981593
+    }
+  },
+  {
+    "distance": 392,
+    "location": {
+      "name": "Lovensestraat",
+      "date": "2019-02-13T14:15:05",
+      "lat": 51.5639175,
+      "lng": 5.097637799999999
+    }
+  },
+  {
+    "distance": 85,
+    "location": {
+      "name": "Rosmolenplein",
+      "date": "Jun 13, 2019, 2:16:45 PM",
+      "lat": 51.56690450000001,
+      "lng": 5.0951502
+    }
+  },
+  {
+    "distance": 424,
+    "location": {
+      "name": "Hoefstraat",
+      "date": "Jun 13, 2019, 2:17:05 PM",
+      "lat": 51.56748229999999,
+      "lng": 5.0943499
+    }
+  },
+  {
+    "distance": 480,
+    "location": {
+      "name": "Besterdring",
+      "date": "Jun 13, 2019, 2:17:55 PM",
+      "lat": 51.5675043,
+      "lng": 5.088246799999999
+    }
+  },
+  {
+    "distance": 446,
+    "location": {
+      "name": "Wilhelminapark",
+      "date": "Jun 13, 2019, 2:18:55 PM",
+      "lat": 51.5671359,
+      "lng": 5.0815714
+    }
+  },
+  {
+    "distance": 220,
+    "location": {
+      "name": "Hasseltstraat",
+      "date": "Jun 13, 2019, 2:19:50 PM",
+      "lat": 51.5679099,
+      "lng": 5.0756096
+    }
+  },
+  {
+    "distance": 190,
+    "location": {
+      "name": "Goirkestraat",
+      "date": "Jun 13, 2019, 2:20:15 PM",
+      "lat": 51.5695869,
+      "lng": 5.0773019
+    }
+  }
+]
