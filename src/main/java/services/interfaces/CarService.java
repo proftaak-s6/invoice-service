@@ -5,5 +5,5 @@ import java.util.List;
 import models.carservice.Car;
 
 public interface CarService {
-    List<Car> getCarsByBsn(String bsn);
+    List<Car> getCarsByBrpId(String brpId);
 }

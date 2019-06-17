@@ -1,12 +1,9 @@
 package endpoints;
 
-import java.io.ByteArrayInputStream;
 import java.time.Month;
 import java.util.Date;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -31,12 +28,12 @@ public class PdfEndpoint {
 
     @POST
     @Produces({ MediaType.APPLICATION_JSON })
-    @Path("/{bsn}/{year}/{month}")
-    public Response getInvoice(@PathParam("bsn") String bsn, @PathParam("year") int year,
+    @Path("/{brpId}/{year}/{month}")
+    public Response getInvoice(@PathParam("brpId") String brpId, @PathParam("year") int year,
             @PathParam("month") int month) {
 
         Month actualMonth = Month.values()[month];
-        Invoice invoice = this.invoiceService.createInvoice(bsn, year, actualMonth);
+        Invoice invoice = this.invoiceService.createInvoice(brpId, year, actualMonth);
 
         ResponseBuilder response = Response.ok().entity(pdfService.GenerateInvoicePdf(invoice));
         response.header("Content-Disposition", "attachment; filename=" + this.getFileName() + ".pdf");

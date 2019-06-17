@@ -13,7 +13,7 @@ import services.interfaces.CarService;
 public class CarServiceMock implements CarService {
 
     @Override
-    public List<Car> getCarsByBsn(String bsn) {
+    public List<Car> getCarsByBrpId(String bsn) {
         List<Car> cars = new ArrayList<>();
 
         Tracker tracker = new Tracker(0, "Mock manufacturer", new Date());

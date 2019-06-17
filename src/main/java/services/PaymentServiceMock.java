@@ -31,7 +31,7 @@ public class PaymentServiceMock implements PaymentService {
 
     @Override
     public Payment create(Payment model) {
-        model.setId(this.id++);
+        model.setId(id++);
         payments.add(model);
         return model;
     }

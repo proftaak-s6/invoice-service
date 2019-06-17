@@ -28,10 +28,13 @@ public class InvoiceServiceMock implements InvoiceService {
     @Inject
     BrpServiceMock brpService;
 
+    @Inject
+    PaymentServiceMock paymentService;
+
     @Override
     public Invoice createInvoice(String bsn, int year, Month month) {
         // 1. Get cars by bsn
-        List<Car> cars = this.carService.getCarsByBsn(bsn);
+        List<Car> cars = this.carService.getCarsByBrpId(bsn);
 
         // 2. For each car
         for (Car car : cars) {
@@ -52,9 +55,8 @@ public class InvoiceServiceMock implements InvoiceService {
         // 5. Get personal information
         PersonalInformation personalInformation = brpService.getPersonalInformation(bsn);
 
-        // 6. TODO: Check if a payment exists for this and if it doesn't, create it
-        // The payment service exists but is commented out right now
-        Payment payment = new Payment(0, "0", Month.JANUARY, 2000, false);
+        // 6. Check if a payment exists for this and if it doesn't, create it
+        Payment payment = paymentService.createIfNew(bsn, year, month);
 
         // 7. Fill the invoice object
         Invoice invoice = new Invoice(new Date(), personalInformation, payment, cars);

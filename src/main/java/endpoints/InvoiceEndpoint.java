@@ -23,12 +23,12 @@ public class InvoiceEndpoint {
 
     @GET
     @Produces({ MediaType.APPLICATION_JSON })
-    @Path("/{bsn}/{year}/{month}")
-    public Response getInvoice(@PathParam("bsn") String bsn, @PathParam("year") int year,
+    @Path("/{brpId}/{year}/{month}")
+    public Response getInvoice(@PathParam("brpId") String brpId, @PathParam("year") int year,
             @PathParam("month") int month) {
 
         Month actualMonth = Month.values()[month];
-        Invoice invoice = this.invoiceService.createInvoice(bsn, year, actualMonth);
+        Invoice invoice = this.invoiceService.createInvoice(brpId, year, actualMonth);
 
         return Response.ok().entity(new Gson().toJson(invoice)).build();
     }

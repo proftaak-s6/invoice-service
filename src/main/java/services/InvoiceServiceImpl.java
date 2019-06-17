@@ -34,7 +34,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Override
     public Invoice createInvoice(String bsn, int year, Month month) {
         // 1. Get cars by bsn
-        List<Car> cars = this.carService.getCarsByBsn(bsn);
+        List<Car> cars = this.carService.getCarsByBrpId(bsn);
 
         // 2. For each car
         for (Car car : cars) {
