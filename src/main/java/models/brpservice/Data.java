@@ -1,26 +1,16 @@
 package models.brpservice;
 
 public class Data {
-    private Person personByBsn;
+    private Person personById;
 
     public Data() {
     }
 
-    public Data(Person personByBsn) {
-        this.personByBsn = personByBsn;
+    public Person getPersonById() {
+        return personById;
     }
 
-    public Person getPersonByBsn() {
-        return this.personByBsn;
+    public void setPersonById(Person personById) {
+        this.personById = personById;
     }
-
-    public void setPersonByBsn(Person personByBsn) {
-        this.personByBsn = personByBsn;
-    }
-
-    @Override
-    public String toString() {
-        return "{" + " personByBsn='" + getPersonByBsn() + "'" + "}";
-    }
-
 }

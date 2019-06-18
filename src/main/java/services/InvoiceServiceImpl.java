@@ -8,11 +8,15 @@ import models.pricingservice.Price;
 import models.trackservice.Step;
 import services.interfaces.InvoiceService;
 
+import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
+
+import com.google.gson.Gson;
 
 public class InvoiceServiceImpl implements InvoiceService {
 
@@ -38,16 +42,22 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         // 2. For each car
         for (Car car : cars) {
+            List<Step> steps = trackService.getDriven(car.getTracker().getId(), year, month);
 
             // 3. Go get the steps of the tracker attached to the car
-            car.setDrivenSteps(trackService.getDriven(car.getTracker().getId(), year, month));
+            car.setDrivenSteps(steps);
             for (Step step : car.getDrivenSteps()) {
 
                 // 4. Calculate price based on the date of the first location in the step and
                 // set it to the step
-                Price pricePerMeterForStep = pricingService.getRoadPrice(step.getStart().getName(),
-                        step.getLocations().get(0).getDate());
-                step.setPriceToPay(((double) step.getDistance()) * pricePerMeterForStep.getPrice());
+                try {
+                    Date d = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(step.getLocation().getDate());
+                    Price pricePerMeterForStep = pricingService.getRoadPrice(step.getLocation().getName(), d);
+
+                    step.setPriceToPay(((double) step.getDistance()) * pricePerMeterForStep.getPrice());
+                } catch (Exception e) {
+                    //
+                }
             }
 
         }

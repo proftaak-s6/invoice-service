@@ -45,8 +45,7 @@ public class InvoiceServiceMock implements InvoiceService {
 
                 // 4. Calculate price based on the date of the first location in the step and
                 // set it to the step
-                Price pricePerMeterForStep = pricingService.getRoadPrice(step.getStart().getName(),
-                        step.getLocations().get(0).getDate());
+                Price pricePerMeterForStep = pricingService.getRoadPrice(step.getLocation().getName(), new Date(step.getLocation().getDate()));
                 step.setPriceToPay(((double) step.getDistance()) * pricePerMeterForStep.getPrice());
             }
 

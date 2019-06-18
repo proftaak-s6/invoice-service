@@ -51,10 +51,10 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     @Transactional
     public Payment createIfNew(long brpId, int year, Month month) {
-        Optional<Payment> existingPayment = entityManager.createQuery("SELECT p FROM Payment p WHERE year = :year AND month = :month AND brpId LIKE :brpId", Payment.class)
+        Optional<Payment> existingPayment = entityManager.createQuery("SELECT p FROM Payment p WHERE year = :year AND month = :month AND brpId = :brpId", Payment.class)
             .setParameter("year", year)
             .setParameter("month", month)
-            .setParameter("bsn", brpId)
+            .setParameter("brpId", brpId)
             .setMaxResults(1)
             .getResultList()
             .stream()

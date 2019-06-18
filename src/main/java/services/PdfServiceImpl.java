@@ -119,10 +119,10 @@ public class PdfServiceImpl implements PdfService {
 
         // Content
         for (Step step : car.getDrivenSteps()) {
-            Date stepDate = step.getLocations().get(0).date;
+            String stepDate = step.getLocation().getDate();
 
-            table.addCell(step.getStart().getName());
-            table.addCell(this.formatAsSimpleDate(stepDate));
+            table.addCell(step.getLocation().getName());
+            table.addCell(stepDate);
             table.addCell(new Cell().add("" + step.getDistance()));
             table.addCell(this.createCurrencyCell(step.getPriceToPay()));
         }

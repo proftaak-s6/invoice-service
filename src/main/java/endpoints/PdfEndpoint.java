@@ -1,7 +1,7 @@
 package endpoints;
 
+import java.text.SimpleDateFormat;
 import java.time.Month;
-import java.util.Date;
 
 import javax.inject.Inject;
 import javax.ws.rs.POST;
@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
 import models.Invoice;
-import services.InvoiceServiceMock;
+import services.InvoiceServiceImpl;
 import services.PdfServiceImpl;
 
 @Path("/pdf")
@@ -24,7 +24,7 @@ public class PdfEndpoint {
     PdfServiceImpl pdfService;
 
     @Inject
-    InvoiceServiceMock invoiceService;
+    InvoiceServiceImpl invoiceService;
 
     @POST
     @Produces({ MediaType.APPLICATION_JSON })
@@ -36,12 +36,12 @@ public class PdfEndpoint {
         Invoice invoice = this.invoiceService.createInvoice(brpId, year, actualMonth);
 
         ResponseBuilder response = Response.ok().entity(pdfService.GenerateInvoicePdf(invoice));
-        response.header("Content-Disposition", "attachment; filename=" + this.getFileName() + ".pdf");
+        response.header("Content-Disposition", "attachment; filename=" + this.getFileName(invoice) + ".pdf");
         return response.build();
     }
 
-    private String getFileName() {
-        long time = new Date().getTime();
-        return "invoice_" + time;
+    private String getFileName(Invoice invoice) {
+        String date = new SimpleDateFormat("yyyy-MM").format(invoice.getInvoiceDate());
+        return "Rekeningrijden_" + String.join("_", invoice.getPersonalInformation().getFullname().split(" ")) + "_" + date;
     }
 }

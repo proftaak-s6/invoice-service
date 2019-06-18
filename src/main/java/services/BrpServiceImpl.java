@@ -1,11 +1,9 @@
 package services;
 
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 
 import models.PersonalInformation;
 import models.brpservice.BrpRootObject;
-import models.brpservice.Data;
 import services.interfaces.BrpService;
 
 public class BrpServiceImpl extends BaseClientService implements BrpService {
@@ -14,12 +12,11 @@ public class BrpServiceImpl extends BaseClientService implements BrpService {
 
     @Override
     public PersonalInformation getPersonalInformation(long brpId) {
-        String query = "{%0A%20personById(id%3A%20" + brpId + ")%20{%0A%20%20%20%20gegeven_naam%0A%20%20%20%20achternaam%0A%20%20%20%20straat%0A%20%20%20%20postcode%0A%20%20%20%20woonplaats%0A%20%20%20%20land%0A%20%20}%0A}%0A";
+        String query = "%7BpersonById(id%3A" + brpId + ")%7Bgegeven_naam%20achternaam%20straat%20postcode%20woonplaats%20land%7D%7D%0A";
+        WebTarget target = getClient().target(BASE_URI + "/graphql").queryParam("query", query);
+        BrpRootObject data = target.request().get(BrpRootObject.class);
 
-        BrpRootObject data = getClient().target(BASE_URI + "/graphql?query=" + query)
-                .request(MediaType.APPLICATION_JSON).get(BrpRootObject.class);
+        return data.getData().getPersonById().toPersonalInformation();
 
-        return data.getData().getPersonByBsn().toPersonalInformation();
     }
-
 }
