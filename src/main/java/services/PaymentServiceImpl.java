@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 public class PaymentServiceImpl implements PaymentService {
 
@@ -48,9 +49,26 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
+    @Transactional
     public Payment createIfNew(String bsn, int year, Month month) {
-        // TODO!
-        return null;
-    }
+        Optional<Payment> existingPayment = entityManager.createQuery("SELECT p FROM Payment p WHERE year = :year AND month = :month AND bsn LIKE :bsn", Payment.class)
+            .setParameter("year", year)
+            .setParameter("month", month)
+            .setParameter("bsn", bsn)
+            .setMaxResults(1)
+            .getResultList()
+            .stream()
+            .findFirst();
 
+        if (existingPayment.isPresent()) {
+            return existingPayment.get();
+        } 
+
+        Payment newPayment = new Payment();
+        newPayment.setBsn(bsn);
+        newPayment.setMonth(month);
+        newPayment.setYear(year);
+
+        return create(newPayment);
+    }
 }
