@@ -60,14 +60,14 @@ public class PaymentServiceMock implements PaymentService {
     }
 
     @Override
-    public Payment createIfNew(String bsn, int year, Month month) {
+    public Payment createIfNew(long brpId, int year, Month month) {
         for (Payment payment : this.payments) {
-            if (payment.getBsn() == bsn && payment.getYear() == year && payment.getMonth().equals(month)) {
+            if (payment.getBrpId() == brpId && payment.getYear() == year && payment.getMonth().equals(month)) {
                 return payment;
             }
         }
 
-        Payment payment = new Payment(0, bsn, month, year, false);
+        Payment payment = new Payment(0, brpId, month, year, false);
         return this.create(payment);
     }
 

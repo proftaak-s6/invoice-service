@@ -5,5 +5,5 @@ import java.time.Month;
 import models.Payment;
 
 public interface PaymentService extends BaseService<Payment> {
-    Payment createIfNew(String bsn, int year, Month month);
+    Payment createIfNew(long brpId, int year, Month month);
 }

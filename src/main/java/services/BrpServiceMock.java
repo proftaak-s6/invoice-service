@@ -7,7 +7,7 @@ import services.interfaces.BrpService;
 public class BrpServiceMock implements BrpService {
 
     @Override
-    public PersonalInformation getPersonalInformation(String bsn) {
+    public PersonalInformation getPersonalInformation(long brpId) {
         Address address = new Address("Mockstraat", "1", "1234MK", "Mockinton", "Groot Mocktannië");
         PersonalInformation personalInformation = new PersonalInformation("Mark Ockersson", address);
         return personalInformation;

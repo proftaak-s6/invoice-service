@@ -5,30 +5,40 @@ import models.Payment;
 import java.time.Month;
 
 public class PaymentDto {
-    private String bsn;
+    private long brpId;
     private Month month;
     private int year;
     private boolean isPaid;
 
-    public Payment toModel(){
+    public Payment toModel() {
         Payment payment = new Payment();
-        payment.setBsn(bsn);
+        payment.setBrpId(brpId);
         payment.setMonth(month);
         payment.setYear(year);
         payment.setIsPaid(isPaid);
         return payment;
     }
 
-    public String getBsn() {
-        return bsn;
+    public PaymentDto() {
     }
 
-    public void setBsn(String bsn) {
-        this.bsn = bsn;
+    public PaymentDto(long brpId, Month month, int year, boolean isPaid) {
+        this.brpId = brpId;
+        this.month = month;
+        this.year = year;
+        this.isPaid = isPaid;
+    }
+
+    public long getBrpId() {
+        return this.brpId;
+    }
+
+    public void setBrpId(long brpId) {
+        this.brpId = brpId;
     }
 
     public Month getMonth() {
-        return month;
+        return this.month;
     }
 
     public void setMonth(Month month) {
@@ -36,18 +46,29 @@ public class PaymentDto {
     }
 
     public int getYear() {
-        return year;
+        return this.year;
     }
 
     public void setYear(int year) {
         this.year = year;
     }
 
-    public boolean isPaid() {
-        return isPaid;
+    public boolean isIsPaid() {
+        return this.isPaid;
     }
 
-    public void setPaid(boolean paid) {
-        isPaid = paid;
+    public boolean getIsPaid() {
+        return this.isPaid;
     }
+
+    public void setIsPaid(boolean isPaid) {
+        this.isPaid = isPaid;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " brpId='" + getBrpId() + "'" + ", month='" + getMonth() + "'" + ", year='" + getYear() + "'"
+                + ", isPaid='" + isIsPaid() + "'" + "}";
+    }
+
 }

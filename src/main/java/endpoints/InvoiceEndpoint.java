@@ -24,7 +24,7 @@ public class InvoiceEndpoint {
     @GET
     @Produces({ MediaType.APPLICATION_JSON })
     @Path("/{brpId}/{year}/{month}")
-    public Response getInvoice(@PathParam("brpId") String brpId, @PathParam("year") int year,
+    public Response getInvoice(@PathParam("brpId") long brpId, @PathParam("year") int year,
             @PathParam("month") int month) {
 
         Month actualMonth = Month.values()[month];

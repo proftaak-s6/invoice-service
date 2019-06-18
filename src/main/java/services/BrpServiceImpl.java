@@ -13,8 +13,8 @@ public class BrpServiceImpl extends BaseClientService implements BrpService {
     private static final String BASE_URI = "http://brp.fontys-project.nl";
 
     @Override
-    public PersonalInformation getPersonalInformation(String bsn) {
-        String query = "%7B%0A%20%20personByBsn(bsn%3A%20%22067148256%22)%20%7B%0A%20%20%20%20gegeven_naam%0A%20%20%20%20achternaam%0A%20%20%20%20straat%0A%20%20%20%20postcode%0A%20%20%20%20woonplaats%0A%20%20%20%20land%0A%20%20%7D%0A%7D%0A";
+    public PersonalInformation getPersonalInformation(long brpId) {
+        String query = "{%0A%20personById(id%3A%20" + brpId + ")%20{%0A%20%20%20%20gegeven_naam%0A%20%20%20%20achternaam%0A%20%20%20%20straat%0A%20%20%20%20postcode%0A%20%20%20%20woonplaats%0A%20%20%20%20land%0A%20%20}%0A}%0A";
 
         BrpRootObject data = getClient().target(BASE_URI + "/graphql?query=" + query)
                 .request(MediaType.APPLICATION_JSON).get(BrpRootObject.class);

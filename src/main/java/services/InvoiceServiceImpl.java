@@ -32,9 +32,9 @@ public class InvoiceServiceImpl implements InvoiceService {
     PaymentServiceImpl paymentService;
 
     @Override
-    public Invoice createInvoice(String bsn, int year, Month month) {
+    public Invoice createInvoice(long brpId, int year, Month month) {
         // 1. Get cars by bsn
-        List<Car> cars = this.carService.getCarsByBrpId(bsn);
+        List<Car> cars = this.carService.getCarsByBrpId(brpId);
 
         // 2. For each car
         for (Car car : cars) {
@@ -53,10 +53,10 @@ public class InvoiceServiceImpl implements InvoiceService {
         }
 
         // 5. Get personal information
-        PersonalInformation personalInformation = brpService.getPersonalInformation(bsn);
+        PersonalInformation personalInformation = brpService.getPersonalInformation(brpId);
 
         // 6. Check if a payment exists for this and if it doesn't, create it
-        Payment payment = paymentService.createIfNew(bsn, year, month);
+        Payment payment = paymentService.createIfNew(brpId, year, month);
 
         // 7. Fill the invoice object
         Invoice invoice = new Invoice(new Date(), personalInformation, payment, cars);

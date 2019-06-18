@@ -48,7 +48,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Payment createIfNew(String bsn, int year, Month month) {
+    public Payment createIfNew(long brpId, int year, Month month) {
         // TODO!
         return null;
     }

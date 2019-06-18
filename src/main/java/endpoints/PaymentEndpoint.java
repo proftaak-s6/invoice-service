@@ -77,7 +77,7 @@ public class PaymentEndpoint {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR.getStatusCode(), e.toString()).build();
         }
 
-        URI location = context.getAbsolutePathBuilder().path(payment.getBsn()).build();
+        URI location = context.getAbsolutePathBuilder().path(Long.toString(payment.getId())).build();
 
         return Response.status(Response.Status.CREATED.getStatusCode(), location.toString()).build();
     }

@@ -12,8 +12,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long id;
-
-    private String bsn;
+    private long brpId;
     private Month month;
     private int year;
     private boolean isPaid;
@@ -21,9 +20,9 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(long id, String bsn, Month month, int year, boolean isPaid) {
+    public Payment(long id, long brpId, Month month, int year, boolean isPaid) {
         this.id = id;
-        this.bsn = bsn;
+        this.brpId = brpId;
         this.month = month;
         this.year = year;
         this.isPaid = isPaid;
@@ -37,12 +36,12 @@ public class Payment {
         this.id = id;
     }
 
-    public String getBsn() {
-        return this.bsn;
+    public long getBrpId() {
+        return this.brpId;
     }
 
-    public void setBsn(String bsn) {
-        this.bsn = bsn;
+    public void setBrpId(long brpId) {
+        this.brpId = brpId;
     }
 
     public Month getMonth() {
@@ -75,8 +74,8 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", bsn='" + getBsn() + "'" + ", month='" + getMonth() + "'" + ", year='"
-                + getYear() + "'" + ", isPaid='" + isIsPaid() + "'" + "}";
+        return "{" + " id='" + getId() + "'" + ", brpId='" + getBrpId() + "'" + ", month='" + getMonth() + "'"
+                + ", year='" + getYear() + "'" + ", isPaid='" + isIsPaid() + "'" + "}";
     }
 
 }
