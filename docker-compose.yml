@@ -3,8 +3,20 @@ version: "3"
 services:
   invoice:
     image: maven:alpine
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/database
+      DATABASE_USER: mysql
+      DATABASE_PASS: mysql
     volumes: 
       - ./target/:/app/
     command: java -jar /app/invoiceservice-1.0-SNAPSHOT.jar
     ports:
       - 9000:8080
+  
+  db:
+    image: mysql:8.0.15
+    environment:
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+      MYSQL_DATABASE: database
+      MYSQL_ROOT_PASSWORD: mysql
