@@ -11,7 +11,7 @@ import services.interfaces.TrackService;
 
 public class TrackServiceImpl extends BaseClientService implements TrackService {
 
-    private static final String BASE_URI = "http://track.fontys-project.nl/";
+    private static final String BASE_URI = "http://tracking.fontys-project.nl/";
 
     @Override
     public List<Step> getDriven(long trackerId, int year, Month month) {
