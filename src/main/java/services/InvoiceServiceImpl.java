@@ -55,8 +55,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         // 5. Get personal information
         PersonalInformation personalInformation = brpService.getPersonalInformation(bsn);
 
-        // 6. TODO: Check if a payment exists for this and if it doesn't, create it
-        // The payment service exists but is commented out right now
+        // 6. Check if a payment exists for this and if it doesn't, create it
         Payment payment = paymentService.createIfNew(bsn, year, month);
 
         // 7. Fill the invoice object
