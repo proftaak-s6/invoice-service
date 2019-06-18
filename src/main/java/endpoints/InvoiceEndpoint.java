@@ -19,7 +19,7 @@ import services.*;
 public class InvoiceEndpoint {
 
     @Inject
-    InvoiceServiceMock invoiceService;
+    InvoiceServiceImpl invoiceService;
 
     @GET
     @Produces({ MediaType.APPLICATION_JSON })
